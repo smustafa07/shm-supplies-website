@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHM Supplies L.L.C. | Smart Digital Growth & Technical Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                            dark: '#030712',
+                            card: '#111827',
+                            border: '#1f2937'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-glow {
+            background: radial-gradient(circle at 50% 25%, rgba(16, 185, 129, 0.2) 0%, rgba(3, 7, 18, 0) 70%);
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+            border-color: rgba(16, 185, 129, 0.5);
+        }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-brand-border/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center shadow-xl shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-bolt text-white text-lg"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-white">SHM <span class="text-brand-500">Supplies</span></span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#services" class="hover:text-brand-400 transition-colors">Services</a>
+                <a href="#solutions" class="hover:text-brand-400 transition-colors">NFC Showcase</a>
+                <a href="#about" class="hover:text-brand-400 transition-colors">Who We Are</a>
+                <a href="#pricing" class="hover:text-brand-400 transition-colors">Pricing</a>
+                <a href="#careers" class="hover:text-brand-400 transition-colors">Careers</a>
+                <a href="#contact" class="hover:text-brand-400 transition-colors">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="https://www.linkedin.com/company/shm-supplies-l-l-c" target="_blank" class="w-10 h-10 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center text-gray-300 hover:text-brand-400 hover:border-brand-500 transition-all" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-all shadow-lg shadow-brand-600/20 hover:shadow-brand-500/40">
+                    Get a Quote
+                </a>
+            </div>
+            <button class="md:hidden text-gray-300 hover:text-white focus:outline-none text-xl p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-brand-border px-6 pt-4 pb-6 space-y-3">
+            <a href="#services" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 text-gray-300 hover:text-brand-400 font-medium">Services</a>
+            <a href="#solutions" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 text-gray-300 hover:text-brand-400 font-medium">NFC Showcase</a>
+            <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 text-gray-300 hover:text-brand-400 font-medium">Who We Are</a>
+            <a href="#pricing" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 text-gray-300 hover:text-brand-400 font-medium">Pricing</a>
+            <a href="#careers" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block py-2 text-gray-300 hover:text-brand-400 font-medium">Careers</a>
+            <a href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-center mt-4 px-5 py-3 rounded-xl bg-brand-600 text-white font-medium text-sm shadow-lg">Get a Quote</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH VISUAL SHOWCASE -->
+    <section class="relative pt-36 pb-24 md:pt-48 md:pb-32 hero-glow overflow-hidden">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-brand-500/10 blur-[130px] rounded-full pointer-events-none animate-pulse-slow"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Column -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 shadow-inner">
+                        <i class="fa-solid fa-shield-halved text-brand-400"></i>
+                        <span>DMV Area's Premier Tech & E-Commerce Partner • 24/7 Support</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+                        Your Business Deserves <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-emerald-300 to-teal-200">Smarter Digital Growth.</span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Led by CEO & Founder Syed Mustafa[cite: 1], SHM Supplies L.L.C. powers businesses through multi-channel e-commerce store management (Amazon, Walmart, eBay, Etsy), custom web development, bulk NFC review cards & stickers, and 24/7 IT support.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white font-semibold text-base transition-all shadow-xl shadow-brand-600/30 flex items-center justify-center space-x-3 group">
+                            <span>Request Custom Quote & Shipping</span>
+                            <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#solutions" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card/80 hover:bg-brand-border border border-brand-border text-gray-200 font-semibold text-base transition-all flex items-center justify-center space-x-2 backdrop-blur-sm">
+                            <span>View NFC Products</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Column (Featuring your exact NFC Card image and flyer style) -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-500/20 to-teal-500/20 rounded-3xl blur-2xl"></div>
+                        <div class="relative rounded-3xl p-3 glass-panel border border-brand-border/80 shadow-2xl overflow-hidden">
+                            <!-- NFC Card Photo Display -->
+                            <img src="image_8aac1f.jpg" alt="SHM Custom Google Review NFC Stand & Card" class="rounded-2xl w-full h-auto object-cover shadow-lg border border-brand-border/50">
+                            <div class="p-4 text-center">
+                                <span class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-wide">
+                                    <i class="fa-solid fa-wifi mr-1.5"></i> Custom NFC Tap Hardware & Bulk Shipping
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO WE ARE SECTION -->
+    <section id="about" class="py-24 bg-brand-card/30 border-t border-brand-border/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-xs font-semibold uppercase tracking-widest text-brand-500 mb-3">Who We Are</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Built for businesses that want to scale online and offline.</h3>
+                    <p class="mt-4 text-gray-400 leading-relaxed">
+                        SHM Supplies L.L.C. bridges the gap between digital storefronts and physical operations. From running high-performing seller accounts on Amazon, Walmart, eBay, and Etsy to manufacturing custom NFC review cards and stickers shipped straight to your business location, we provide complete corporate backing.
+                    </p>
+                    <div class="mt-8 grid grid-cols-2 gap-6">
+                        <div class="p-5 rounded-2xl bg-brand-card border border-brand-border shadow-lg">
+                            <div class="text-brand-400 text-3xl font-extrabold tracking-tight">24/7</div>
+                            <div class="text-xs text-gray-400 mt-1 uppercase font-medium">Round-the-clock support</div>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-brand-card border border-brand-border shadow-lg">
+                            <div class="text-brand-400 text-3xl font-extrabold tracking-tight">DMV</div>
+                            <div class="text-xs text-gray-400 mt-1 uppercase font-medium">Regional coverage & nationwide shipping</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-6 rounded-3xl bg-brand-card border border-brand-border flex items-start space-x-4 shadow-xl">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0"><i class="fa-solid fa-shop text-xl"></i></div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white">Multi-Platform E-Commerce</h4>
+                            <p class="text-sm text-gray-400 mt-1">Professional management of your product listings, inventory, and optimization across Amazon, Walmart, eBay, Etsy, and custom web stores.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 rounded-3xl bg-brand-card border border-brand-border flex items-start space-x-4 shadow-xl">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-400 shrink-0"><i class="fa-solid fa-truck-fast text-xl"></i></div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-white">Custom Bulk Physical Products</h4>
+                            <p class="text-sm text-gray-400 mt-1">Direct bulk manufacturing, custom programming, and secure commercial shipping of smart review hardware and stickers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE SERVICES OVERVIEW -->
+    <section id="services" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-brand-500 mb-3">Comprehensive Capabilities</h2>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Services Engineered for Growth</h3>
+            <p class="mt-4 text-gray-400">From digital marketplaces to physical merchandise and 24/7 technical IT support, we provide the ultimate commercial toolset.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border card-glow transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-inner">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">E-Commerce Store Management</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Full operational oversight, listing enhancements, and order fulfillment support across major online retail networks.</p>
+                </div>
+                <ul class="text-xs text-gray-400 space-y-2.5 border-t border-brand-border/80 pt-4">
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Amazon, Walmart & eBay Stores</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Etsy Shop Optimization</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Inventory & Listing Management</li>
+                </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border card-glow transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-inner">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">NFC Review Cards & Stickers</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Customized bulk NFC Google review cards and adhesive vinyl stickers shipped straight to your business location.</p>
+                </div>
+                <ul class="text-xs text-gray-400 space-y-2.5 border-t border-brand-border/80 pt-4">
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Custom Bulk Manufacturing</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Tap-to-Review Stickers & Stands</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Direct Business Shipping</li>
+                </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border card-glow transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-inner">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Web & App Development</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Modern static websites, high-conversion landing pages, and responsive web applications built to scale.</p>
+                </div>
+                <ul class="text-xs text-gray-400 space-y-2.5 border-t border-brand-border/80 pt-4">
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Custom Business Websites</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Shopify & E-Commerce Setups</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Secure SSL & Hosting Config</li>
+                </ul>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border card-glow transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-inner">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Marketing, SEO & Paid Ads</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Data-driven search engine optimization and targeted ad campaigns to maximize brand visibility.</p>
+                </div>
+                <ul class="text-xs text-gray-400 space-y-2.5 border-t border-brand-border/80 pt-4">
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Local & Organic SEO</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Google & Meta Paid Advertising</li>
+                    <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Conversion Rate Optimization</li>
+                </ul>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border card-glow transition-all duration-300 group md:col-span-2 lg:col-span-2 flex flex-col justify-between">
+                <div>
+                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all shadow-inner">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Technical Support & IT Services</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Reliable 24/7 on-site and remote IT infrastructure support. From network troubleshooting and hardware diagnosis to cybersecurity audits and backup recovery planning.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-brand-border/80 pt-4 text-xs text-gray-400">
+                    <div><i class="fa-solid fa-check text-brand-500 mr-2"></i> Infrastructure Troubleshooting & Setup</div>
+                    <div><i class="fa-solid fa-check text-brand-500 mr-2"></i> Cloud Migration & Security Audits</div>
+                    <div><i class="fa-solid fa-check text-brand-500 mr-2"></i> Backup & Disaster Recovery Plans</div>
+                    <div><i class="fa-solid fa-check text-brand-500 mr-2"></i> 24/7 Retainer & On-Demand Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED NFC SHOWCASE SECTION -->
+    <section id="solutions" class="py-24 bg-brand-card/20 border-y border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                        Featured Physical Products
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Custom Google Review NFC Cards, Stands & Stickers</h3>
+                    <p class="mt-4 text-gray-400 leading-relaxed">
+                        Eliminate friction in customer feedback. We supply custom-programmed NFC tap cards, desk stands, and adhesive vinyl stickers that instantly direct customers straight to your Google review portal. Available for individual purchase or customized bulk orders shipped directly to your business.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle-check text-brand-500"></i><span>Instant tap-to-review functionality (no apps required)</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle-check text-brand-500"></i><span>Custom printed with your exact business logo and colors</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-circle-check text-brand-500"></i><span>Bulk orders available with nationwide business shipping</span></li>
+                    </ul>
+                    <div class="mt-8">
+                        <a href="#contact" class="px-7 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold transition-all shadow-lg shadow-brand-600/30">Request Bulk Quote & Shipping</a>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="relative w-full max-w-md rounded-3xl p-4 glass-panel border border-brand-border/80 shadow-2xl overflow-hidden">
+                        <img src="image_8aac1f.jpg" alt="SHM Custom NFC Review Hardware" class="rounded-2xl w-full h-auto object-cover shadow-lg border border-brand-border/50">
+                        <div class="p-4 text-center">
+                            <span class="text-xs text-gray-300 font-medium">Equip your storefront, checkout counters, and sales team with smart review tools.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING & PACKAGES -->
+    <section id="pricing" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-semibold uppercase tracking-widest text-brand-500 mb-3">Investment Frameworks</h2>
+            <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Flexible Pricing for E-Commerce & Tech Solutions</h3>
+            <p class="mt-4 text-gray-400">Choose a service package below or contact us directly for customized bulk product quotes and shipping options.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Starter -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border flex flex-col justify-between shadow-xl">
+                <div>
+                    <h4 class="text-lg font-bold text-white">Starter Digital</h4>
+                    <p class="text-xs text-gray-400 mt-1">For new businesses establishing their web and local footprint.</p>
+                    <div class="mt-6 text-3xl font-extrabold text-white">Custom <span class="text-xs font-normal text-gray-400">/ project</span></div>
+                    <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Professional Business Website</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Domain & SSL Setup</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Basic Local SEO Optimization</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Lead Capture Contact Form</span></li>
+                    </ul>
+                </div>
+                <div class="mt-10">
+                    <a href="#contact" class="block text-center w-full py-3.5 rounded-xl bg-brand-border/60 hover:bg-brand-500 text-white font-medium text-sm transition-all">Get Quote</a>
+                </div>
+            </div>
+
+            <!-- Growth -->
+            <div class="p-8 rounded-3xl bg-brand-card border-2 border-brand-500 flex flex-col justify-between relative shadow-2xl shadow-brand-500/15">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-brand-600 to-emerald-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">Most Popular</div>
+                <div>
+                    <h4 class="text-lg font-bold text-white">E-Commerce & Growth</h4>
+                    <p class="text-xs text-gray-400 mt-1">Multi-channel store management & continuous marketing.</p>
+                    <div class="mt-6 text-3xl font-extrabold text-white">Custom <span class="text-xs font-normal text-gray-400">/ month</span></div>
+                    <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Amazon, Walmart, eBay & Etsy Mgmt</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>SEO & Paid Ad Campaigns</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Review Generation Workflows</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Monthly Analytics Reporting</span></li>
+                    </ul>
+                </div>
+                <div class="mt-10">
+                    <a href="#contact" class="block text-center w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-all shadow-lg shadow-brand-600/30">Scale Your Store</a>
+                </div>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="p-8 rounded-3xl bg-brand-card border border-brand-border flex flex-col justify-between shadow-xl">
+                <div>
+                    <h4 class="text-lg font-bold text-white">Enterprise & Bulk Supply</h4>
+                    <p class="text-xs text-gray-400 mt-1">Full technical support and bulk custom merchandise shipping.</p>
+                    <div class="mt-6 text-3xl font-extrabold text-white">Tailored <span class="text-xs font-normal text-gray-400">/ custom</span></div>
+                    <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Bulk NFC Cards, Stands & Stickers</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Direct Business Shipping</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>Custom App Integrations</span></li>
+                        <li class="flex items-center space-x-3"><i class="fa-solid fa-check text-brand-500"></i><span>24/7 Dedicated IT Support Contract</span></li>
+                    </ul>
+                </div>
+                <div class="mt-10">
+                    <a href="#contact" class="block text-center w-full py-3.5 rounded-xl bg-brand-border/60 hover:bg-brand-500 text-white font-medium text-sm transition-all">Request Bulk Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREERS SECTION -->
+    <section id="careers" class="py-24 bg-brand-card/30 border-t border-brand-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-brand-500 mb-3">Join Our Team</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Careers at SHM Supplies L.L.C.</h3>
+                <p class="mt-4 text-gray-400">We seek ambitious technical specialists, e-commerce managers, and web developers to support our expanding client network across the DMV area.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Job Opening 1 -->
+                <div class="p-8 rounded-3xl bg-brand-card border border-brand-border shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase">Remote / DMV</span>
+                            <span class="text-xs text-gray-400 font-medium">Full-Time / Contract</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">IT Help Desk & Support Specialist</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Deliver responsive tier-1/tier-2 technical troubleshooting, remote infrastructure maintenance, and professional support for corporate clients.</p>
+                        <ul class="text-xs text-gray-400 space-y-2 border-t border-brand-border/80 pt-4 mb-6">
+                            <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Strong troubleshooting & documentation ability</li>
+                            <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Experience with ticketing systems & OS administration</li>
+                            <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Customer-first communication approach</li>
+                        </ul>
+                    </div>
+                    <a href="mailto:info@shmsuppliesllc.com?subject=Job Application - IT Support Specialist" class="block text-center w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm transition-all shadow-lg shadow-brand-600/20">
+                        Apply via Email
+                    </a>
+                </div>
+
+                <!-- Job Opening 2 -->
+                <div class="p-8 rounded-3xl bg-brand-card border border-brand-border shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3.5 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold uppercase">Remote</span>
+                            <span class="text-xs text-gray-400 font-medium">Project-Based</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2">E-Commerce & Web Strategist</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Manage marketplace accounts on Amazon, Walmart, eBay, and Etsy while optimizing high-performance business web applications.</p>
+                        <ul class="text-xs text-gray-400 space-y-2 border-t border-brand-border/80 pt-4 mb-6">
+                            <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Marketplace operations experience (Amazon/Walmart/Etsy)</li>
+                            <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Proficient in web layout and customer conversion</li>
+                            <li><i class="fa-solid fa-check text-brand-500 mr-2"></i> Detail-oriented portfolio and track record</li>
+                        </ul>
+                    </div>
+                    <a href="mailto:info@shmsuppliesllc.com?subject=Job Application - E-Commerce Strategist" class="block text-center w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm transition-all shadow-lg shadow-brand-600/20">
+                        Apply via Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact" class="py-24 bg-brand-card/50 border-t border-brand-border/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-xs font-semibold uppercase tracking-widest text-brand-500 mb-3">Get In Touch</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Request a Quote & Shipping Details</h3>
+                    <p class="mt-4 text-gray-400 leading-relaxed">Whether you need custom bulk NFC review cards, e-commerce store management, or 24/7 IT support, contact SHM Supplies L.L.C. today. We ship directly to your business.</p>
+                    
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 shadow-inner"><i class="fa-solid fa-user-tie text-lg"></i></div>
+                            <div>
+                                <div class="text-sm font-semibold text-white">CEO / Founder</div>
+                                <div class="text-gray-400 text-sm">Syed Mustafa[cite: 1]</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 shadow-inner"><i class="fa-solid fa-envelope text-lg"></i></div>
+                            <div>
+                                <div class="text-sm font-semibold text-white">Email Us</div>
+                                <a href="mailto:info@shmsuppliesllc.com" class="text-brand-400 hover:underline text-sm">info@shmsuppliesllc.com[cite: 1]</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 shadow-inner"><i class="fa-solid fa-phone text-lg"></i></div>
+                            <div>
+                                <div class="text-sm font-semibold text-white">Direct Line</div>
+                                <a href="tel:5714976415" class="text-brand-400 hover:underline text-sm">+1-571-497-6415[cite: 1]</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 shadow-inner"><i class="fa-solid fa-truck-fast text-lg"></i></div>
+                            <div>
+                                <div class="text-sm font-semibold text-white">Merchandise Shipping</div>
+                                <div class="text-gray-400 text-sm">Bulk NFC Cards & Stickers Shipped Nationwide</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-400 flex items-center justify-center shrink-0 shadow-inner"><i class="fa-brands fa-linkedin-in text-lg"></i></div>
+                            <div>
+                                <div class="text-sm font-semibold text-white">LinkedIn Network</div>
+                                <a href="https://www.linkedin.com/company/shm-supplies-l-l-c" target="_blank" class="text-brand-400 hover:underline text-sm">SHM Supplies L.L.C. Company Page</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 sm:p-10 rounded-3xl bg-brand-card border border-brand-border shadow-2xl">
+                    <h4 class="text-xl font-bold text-white mb-6">Request a Custom Quote</h4>
+                    
+                    <!-- Form configured with FormSubmit endpoint -->
+                    <form action="https://formsubmit.co/info@shmsuppliesllc.com" method="POST" class="space-y-4">
+                        
+                        <!-- FormSubmit Configuration Hidden Fields -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Quote / Shipping Request from SHM Supplies Website!">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase mb-1.5">Your Name</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase mb-1.5">Email Address</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="john@business.com">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase mb-1.5">Phone Number</label>
+                                <input type="tel" name="phone" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="571-000-0000">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-400 uppercase mb-1.5">Business Name</label>
+                                <input type="text" name="business" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="Your Business">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase mb-1.5">Services / Products Needed</label>
+                            <select name="service" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white text-sm focus:outline-none focus:border-brand-500 transition-colors">
+                                <option value="Bulk NFC Review Cards & Stickers (Shipping Quote)">Bulk NFC Review Cards & Stickers (Shipping Quote)</option>
+                                <option value="E-Commerce Store Management (Amazon/Walmart/eBay/Etsy)">E-Commerce Store Management (Amazon, Walmart, eBay, Etsy)</option>
+                                <option value="Web & Application Development">Web & Application Development</option>
+                                <option value="Marketing, SEO & Paid Ads">Marketing, SEO & Paid Ads</option>
+                                <option value="Technical Support & IT Services">Technical Support & IT Services</option>
+                                <option value="Other Business Services">Other Business Services</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase mb-1.5">Project Details / Shipping Address</label>
+                            <textarea name="message" rows="4" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-brand-border text-white text-sm focus:outline-none focus:border-brand-500 transition-colors" placeholder="Tell us about your bulk order quantity, shipping location, or store needs..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 text-white font-semibold text-sm transition-all shadow-xl shadow-brand-600/30">
+                            Submit Quote & Shipping Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="mt-20 pt-8 border-t border-brand-border/80 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 SHM Supplies L.L.C. All rights reserved. Serving the DMV Area & Nationwide Shipping.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="https://www.linkedin.com/company/shm-supplies-l-l-c" target="_blank" class="hover:text-brand-400 transition-colors">LinkedIn</a>
+                    <a href="#" class="hover:text-brand-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
