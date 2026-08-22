@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHM Supplies L.L.C. · Elite Brutalist</title>
+
+    <link class="logo" rel="icon" type="image/png" href="./SHMicon.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+    </script>
+    <style>
+        /* ——— CSS VARIABLES ——— */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-body: #f5f0e8;
+            --bg-card: #ffffff;
+            --bg-dark-accent: #1a1a1a;
+            --text-primary: #0d0d0d;
+            --text-secondary: #1f1f1f;
+            --border-color: #0d0d0d;
+            --shadow-color: #0d0d0d;
+            --badge-bg: #0d0d0d;
+            --badge-text: #f5f0e8;
+            --accent-pink: #d7267a;
+            --accent-yellow: #f4c430;
+            --accent-teal: #1e7f7a;
+            --accent-orange: #e05a2a;
+            --accent-purple: #6b2fa0;
+            --accent-gold: #d4a843;
+            --btn-primary-bg: #0d0d0d;
+            --btn-primary-text: #f5f0e8;
+            --btn-primary-shadow: #0d0d0d;
+            --glow-color: rgba(215, 38, 122, 0.3);
+            --card-bg: #ffffff;
+            --card-text: #1f1f1f;
+            --input-bg: #ffffff;
+            --input-text: #0d0d0d;
+        }
+
+
+
+        body.dark-theme {
+            --bg-body: #0a0a0f;
+            --bg-card: #16161f;
+            --bg-dark-accent: #1e1e2a;
+            --text-primary: #eaeaea;
+            --text-secondary: #b0b0c0;
+            --border-color: #3a3a4a;
+            --shadow-color: #000;
+            --badge-bg: #eaeaea;
+            --badge-text: #121212;
+            --accent-pink: #f25a8e;
+            --accent-yellow: #f7d44a;
+            --accent-teal: #3ab0a8;
+            --accent-orange: #f57c4a;
+            --accent-purple: #a568d6;
+            --accent-gold: #e8c84a;
+            --btn-primary-bg: #eaeaea;
+            --btn-primary-text: #121212;
+            --btn-primary-shadow: #444;
+            --glow-color: rgba(242, 90, 142, 0.25);
+            --card-bg: #16161f;
+            --card-text: #b0b0c0;
+            --input-bg: #16161f;
+            --input-text: #eaeaea;
+        }
+
+        /* ——— BASE ——— */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-primary);
+            font-family: 'Courier New', Courier, 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            padding: 0 1.5rem;
+            transition: background 0.4s, color 0.4s;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* ——— TYPOGRAPHY ——— */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-primary);
+        }
+
+        h1 {
+            font-size: 5.5rem;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05em;
+        }
+
+        h2 {
+            font-size: 2.6rem;
+            border-bottom: 4px solid var(--border-color);
+            padding-bottom: 0.3rem;
+            display: inline-block;
+            margin-bottom: 1.8rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p,
+        li,
+        span,
+        a {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 2px;
+            transition: 0.2s ease;
+        }
+
+        a:hover {
+            background: var(--text-primary);
+            color: var(--bg-body);
+            text-decoration: none;
+        }
+
+        /* ========== HERO SECTION - FIXED ========== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 4rem 0 5rem 0;
+            border-bottom: 4px solid var(--border-color);
+            margin-bottom: 3rem;
+            align-items: start;
+            min-height: 80vh;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-width: 0;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left #heroTitle {
+            height: 100px;
+            min-height: calc(2 * 1.1em);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: clamp(2rem, 6vw, 3rem);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-primary);
+            width: 100%;
+            max-width: 100%;
+            flex-shrink: 0;
+            overflow: visible;
+            position: relative;
+        }
+
+        .hero-left #heroTitle #typingText {
+            display: inline;
+            font-size: inherit;
+            font-weight: 900;
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .hero-left #heroTitle .typing-cursor {
+            display: inline-block;
+            width: 0.09em;
+            height: 1em;
+            background: var(--accent-pink);
+            margin-left: 0.09em;
+            animation: blink 0.7s step-end infinite;
+            vertical-align: text-bottom;
+            flex-shrink: 0;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 0.4rem 1.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            border: 2px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .hero-img-box {
+            background: var(--bg-card);
+            border: 4px solid var(--border-color);
+            padding: 1.5rem;
+            box-shadow: 15px 15px 0 0 var(--shadow-color);
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-img-box:hover {
+            transform: scale(1.03) rotate(-1.5deg);
+        }
+
+        .hero-img-box img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            border: 2px solid var(--border-color);
+            background: transparent;
+        }
+
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            min-width: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typing cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 6px;
+            height: 1.2em;
+            background: var(--accent-pink);
+            margin-left: 6px;
+            animation: blink 0.7s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ——— RESPONSIVE FIXES FOR HERO HEADING ——— */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                min-height: auto;
+                align-items: center;
+            }
+
+            .hero-left {
+                align-items: center;
+                width: 100%;
+            }
+
+            .hero-left #heroTitle {
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* ——— BUTTONS ——— */
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2.4rem;
+            background: var(--bg-card);
+            border: 3px solid var(--border-color);
+            box-shadow: 8px 8px 0 0 var(--shadow-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--text-primary);
+            transform: translateX(-105%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            transform: translateX(0);
+        }
+
+        .btn:hover {
+            color: var(--bg-body);
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0 0 var(--shadow-color);
+        }
+
+        .btn-primary {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            box-shadow: 8px 8px 0 0 var(--btn-primary-shadow);
+            border-color: var(--border-color);
+        }
+
+        .btn-primary::after {
+            background: var(--bg-card);
+        }
+
+        .btn-primary:hover {
+            color: var(--text-primary);
+        }
+
+        /* ——— CARDS ——— */
+        .card {
+            background: var(--card-bg);
+            border: 3px solid var(--border-color);
+            padding: 2rem 2.2rem;
+            box-shadow: 10px 10px 0 0 var(--shadow-color);
+            margin-bottom: 2rem;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            color: var(--card-text);
+        }
+
+        .card h4 {
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.02));
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+
+        .card-dark {
+            background: var(--bg-dark-accent);
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+            box-shadow: 10px 10px 0 0 var(--shadow-color);
+        }
+
+        .card-dark h4 {
+            color: #fff;
+        }
+
+        .card-dark p {
+            color: #bbb;
+        }
+
+        /* ——— GLOW EFFECTS ——— */
+        .glow-pulse {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px var(--glow-color), 10px 10px 0 0 var(--shadow-color);
+            }
+
+            50% {
+                box-shadow: 0 0 60px var(--glow-color), 0 0 100px var(--glow-color), 10px 10px 0 0 var(--shadow-color);
+            }
+        }
+
+        /* ——— NAV ——— */
+        .nav-brutal {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 0;
+            border-bottom: 4px solid var(--border-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 900;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-logo i {
+            font-size: 2.4rem;
+            background: var(--text-primary);
+            color: var(--bg-body);
+            padding: 0.3rem 0.7rem;
+            border: 3px solid var(--border-color);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-logo:hover i {
+            transform: rotate(180deg) scale(1.15);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-pink);
+            transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            background: none;
+            color: var(--accent-pink);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: 3px solid var(--border-color);
+            padding: 0 0.8rem;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 1.5rem 0;
+            border-top: 4px solid var(--border-color);
+            margin-top: 1rem;
+        }
+
+        #mobile-menu a {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* ——— GRID ——— */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 2rem 0;
+            align-items: center;
+        }
+
+        .section {
+            padding: 4rem 0;
+            border-bottom: 4px solid var(--border-color);
+            position: relative;
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        .badge {
+            background: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 0.25rem 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-block;
+            border: 2px solid var(--border-color);
+        }
+
+        .list-check {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .list-check li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .list-check i {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+        }
+
+        /* ——— FORM ——— */
+        input,
+        select,
+        textarea {
+            background: var(--input-bg);
+            border: 3px solid var(--border-color);
+            padding: 0.8rem 1.2rem;
+            width: 100%;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            box-shadow: 5px 5px 0 0 var(--shadow-color);
+            transition: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: var(--input-text);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            transform: scale(1.02);
+            box-shadow: 7px 7px 0 0 var(--shadow-color);
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: var(--text-secondary);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.5rem;
+        }
+
+        /* ——— FOOTER ——— */
+        .footer-brutal {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 4px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        /* ——— BACK TO TOP ——— */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            border: 3px solid var(--border-color);
+            box-shadow: 8px 8px 0 0 var(--shadow-color);
+            padding: 0.8rem 1.2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-family: 'Courier New', monospace;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 12px 12px 0 0 var(--shadow-color);
+        }
+
+        /* ——— THEME TOGGLE ——— */
+        .theme-toggle {
+            background: var(--bg-card);
+            border: 3px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            box-shadow: 4px 4px 0 0 var(--shadow-color);
+            transition: 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+            line-height: 1;
+        }
+
+        .theme-toggle:hover {
+            transform: translate(2px, 2px) scale(1.05);
+            box-shadow: 2px 2px 0 0 var(--shadow-color);
+        }
+
+        .theme-toggle .icon-sun {
+            display: none;
+        }
+
+        body.dark-theme .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        body.dark-theme .theme-toggle .icon-sun {
+            display: inline-block;
+        }
+
+        .mobile-toggle .icon-xmark {
+            display: none;
+        }
+
+        .mobile-toggle[aria-expanded="true"] .icon-bars {
+            display: none;
+        }
+
+        .mobile-toggle[aria-expanded="true"] .icon-xmark {
+            display: inline-block;
+        }
+
+        /* ——— ACCENTS ——— */
+        .accent-pink {
+            color: var(--accent-pink);
+        }
+
+        .accent-yellow {
+            color: var(--accent-yellow);
+        }
+
+        .accent-teal {
+            color: var(--accent-teal);
+        }
+
+        .accent-orange {
+            color: var(--accent-orange);
+        }
+
+        .accent-purple {
+            color: var(--accent-purple);
+        }
+
+        .accent-gold {
+            color: var(--accent-gold);
+        }
+
+        .bg-accent-pink {
+            background: var(--accent-pink);
+            color: #fff;
+        }
+
+        .bg-accent-yellow {
+            background: var(--accent-yellow);
+            color: #121212;
+        }
+
+        .bg-accent-teal {
+            background: var(--accent-teal);
+            color: #fff;
+        }
+
+        .bg-accent-orange {
+            background: var(--accent-orange);
+            color: #fff;
+        }
+
+        .bg-accent-purple {
+            background: var(--accent-purple);
+            color: #fff;
+        }
+
+        .bg-accent-gold {
+            background: var(--accent-gold);
+            color: #121212;
+        }
+
+        .inline-icon-accent {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            margin-right: 0.3rem;
+        }
+
+        .img-fit {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+            display: block;
+            background: transparent;
+        }
+
+        /* ——— CLIENT LOGO SECTION ——— */
+        .client-section {
+            padding: 2rem 0;
+            border-bottom: 4px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .client-section .client-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem 4rem;
+        }
+
+        .client-section .client-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .client-section .client-item i {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+        }
+
+        /* ——— CLIENT SPOTLIGHT CARD ——— */
+        .client-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.2rem;
+            background: var(--card-bg);
+            border: 3px solid var(--accent-orange);
+            box-shadow: 10px 10px 0 0 var(--accent-orange);
+            padding: 2.2rem;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .client-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .client-card-icon {
+            flex-shrink: 0;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            background: var(--accent-orange);
+            color: #fff;
+            border: 3px solid var(--border-color);
+        }
+
+        .client-card-body {
+            min-width: 0;
+            flex: 1;
+        }
+
+        @media (max-width: 700px) {
+            .client-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1.2rem;
+                padding: 1.6rem;
+            }
+
+            .client-card-body ul.list-check li,
+            .client-card-body p {
+                text-align: left;
+            }
+
+            .client-card-body>div[style*="flex-wrap"] {
+                justify-content: center;
+            }
+        }
+
+        /* ——— RESPONSIVE ——— */
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                min-height: auto;
+                align-items: center;
+            }
+
+            .hero-left {
+                align-items: center;
+            }
+
+            .hero-right {
+                justify-content: center;
+            }
+
+            .hero-img-box {
+                max-width: 360px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-left .btn {
+                margin: 0 auto;
+            }
+
+            .client-section .client-grid {
+                gap: 1.5rem;
+            }
+
+            .client-section .client-item {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions .btn {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: inline-block;
+            }
+
+            #mobile-menu.show {
+                display: flex;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-img-box {
+                max-width: 280px;
+            }
+
+            #backToTop {
+                bottom: 20px;
+                right: 20px;
+                padding: 0.6rem 1rem;
+                font-size: 1.2rem;
+            }
+
+            .client-section .client-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .client-section .client-item {
+                font-size: 0.9rem;
+            }
+
+            .client-section .client-item i {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-img-box {
+                max-width: 220px;
+                padding: 1rem;
+            }
+
+            .hero-img-box img {
+                max-height: 200px;
+            }
+
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.75rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.2rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 701px) {
+            #mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-yellow), var(--accent-teal), var(--accent-purple));
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Floating particles background */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div class="container">
+
+        <!-- ========== HEADER / NAV - FIXED SINGLE LINE ========== -->
+        <nav class="nav-brutal" id="navbar">
+            <a href="#" class="nav-logo">
+                <i class="fa-solid fa-bolt"></i>
+                <span>SHM <span
+                        style="background:var(--text-primary);color:var(--bg-body);padding:0 0.3rem;">Supplies</span>
+                    L.L.C.</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#it-services">IT & Tech</a>
+                <a href="#web-dev">Web & App</a>
+                <a href="#business-growth">Growth</a>
+                <a href="#nfc-hardware">NFC</a>
+                <a href="#clients">Clients</a>
+                <a href="#careers">Careers</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://www.linkedin.com/company/shm-supplies-l-l-c" target="_blank"
+                    style="font-size:1.4rem;text-decoration:none;">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon icon-moon"></i>
+                    <i class="fa-solid fa-sun icon-sun"></i>
+                </button>
+                <a href="#contact" class="btn btn-primary">Book Consultation</a>
+                <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fa-solid fa-bars icon-bars"></i>
+                    <i class="fa-solid fa-xmark icon-xmark"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- mobile menu -->
+        <div id="mobile-menu">
+            <a href="#it-services" onclick="document.getElementById('mobile-menu').classList.remove('show')">IT &
+                Tech</a>
+            <a href="#web-dev" onclick="document.getElementById('mobile-menu').classList.remove('show')">Web & App</a>
+            <a href="#business-growth"
+                onclick="document.getElementById('mobile-menu').classList.remove('show')">Growth</a>
+            <a href="#nfc-hardware" onclick="document.getElementById('mobile-menu').classList.remove('show')">NFC</a>
+            <a href="#clients" onclick="document.getElementById('mobile-menu').classList.remove('show')">Clients</a>
+            <a href="#careers" onclick="document.getElementById('mobile-menu').classList.remove('show')">Careers</a>
+            <a href="#contact" onclick="document.getElementById('mobile-menu').classList.remove('show')" class="btn"
+                style="text-align:center;">Book Consultation</a>
+        </div>
+
+        <!-- ========== HERO ========== -->
+        <section class="hero" id="hero">
+            <div class="hero-left">
+                <span class="hero-tag"><i class="fa-solid fa-shield-halved"></i> DMV Elite · 24/7</span>
+                <h1 id="heroTitle">
+                    <span id="typingText"></span><span class="typing-cursor"></span>
+                </h1>
+                <p
+                    style="font-size:1.3rem;font-weight:500;margin:1.5rem 0 2.5rem 0;color:var(--text-secondary);max-width:600px;">
+                    At <strong style="color:var(--accent-teal);">SHM Supplies L.L.C.</strong>, we deliver
+                    enterprise-grade 24/7 technical support, high-performance web & mobile development, business online
+                    setups, and custom NFC merchandise.
+                </p>
+                <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+                    <a href="#contact" class="btn btn-primary" id="heroBtn1">Request Enterprise Quote</a>
+                    <a href="#it-services" class="btn" id="heroBtn2"
+                        style="border-color:var(--accent-orange);box-shadow:8px 8px 0 0 var(--accent-orange);">Explore
+                        IT Solutions</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-img-box glow-pulse"
+                    style="border-color:var(--accent-yellow);box-shadow:15px 15px 0 0 var(--accent-yellow);">
+                    <img src="./image_8aac1f1.jpg" alt="SHM Custom Google Review NFC Stand" class="img-fit">
+                    <div
+                        style="margin-top:0.8rem;text-align:center;font-weight:600;font-size:0.85rem;text-transform:uppercase;border-top:2px solid var(--border-color);padding-top:0.8rem;color:var(--text-secondary);">
+                        <i class="fa-solid fa-wifi" style="color:var(--accent-purple);"></i> Custom NFC Hardware & Bulk
+                        Shipping
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== IT SERVICES ========== -->
+        <section id="it-services" class="section">
+            <h2><span class="inline-icon-accent bg-accent-pink">⚡</span> 24/7 IT Infrastructure & Help Desk</h2>
+            <p style="font-size:1.15rem;margin-bottom:2rem;color:var(--text-secondary);">Reliable, round‑the‑clock
+                technical operations to keep your business running.</p>
+
+            <div class="grid-3" id="services-grid">
+                <div class="card service-card"
+                    style="border-color:var(--accent-teal);box-shadow:10px 10px 0 0 var(--accent-teal);">
+                    <div
+                        style="font-size:2.8rem;background:var(--accent-teal);color:#fff;display:inline-block;padding:0.3rem 1rem;margin-bottom:1rem;border-radius:0;">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h4>24/7 IT Help Desk</h4>
+                    <p style="margin:0.5rem 0 1rem 0;color:var(--text-secondary);">Tier‑1 and tier‑2 troubleshooting,
+                        remote diagnostics, hardware/software support.</p>
+                    <ul class="list-check">
+                        <li><i class="fa-solid fa-check accent-teal"></i> Remote & On‑Site DMV</li>
+                        <li><i class="fa-solid fa-check accent-teal"></i> Hardware & Network</li>
+                        <li><i class="fa-solid fa-check accent-teal"></i> Active Directory Mgmt</li>
+                    </ul>
+                </div>
+
+                <div class="card service-card"
+                    style="border-color:var(--accent-purple);box-shadow:10px 10px 0 0 var(--accent-purple);">
+                    <div
+                        style="font-size:2.8rem;background:var(--accent-purple);color:#fff;display:inline-block;padding:0.3rem 1rem;margin-bottom:1rem;border-radius:0;">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4>Cybersecurity & Audits</h4>
+                    <p style="margin:0.5rem 0 1rem 0;color:var(--text-secondary);">Comprehensive security assessments,
+                        firewall, endpoint protection, compliance.</p>
+                    <ul class="list-check">
+                        <li><i class="fa-solid fa-check accent-purple"></i> Vulnerability Assessments</li>
+                        <li><i class="fa-solid fa-check accent-purple"></i> Secure Cloud Migrations</li>
+                        <li><i class="fa-solid fa-check accent-purple"></i> Endpoint Protection</li>
+                    </ul>
+                </div>
+
+                <div class="card service-card"
+                    style="border-color:var(--accent-orange);box-shadow:10px 10px 0 0 var(--accent-orange);">
+                    <div
+                        style="font-size:2.8rem;background:var(--accent-orange);color:#fff;display:inline-block;padding:0.3rem 1rem;margin-bottom:1rem;border-radius:0;">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h4>Infrastructure & Backup</h4>
+                    <p style="margin:0.5rem 0 1rem 0;color:var(--text-secondary);">Robust server deployment, automated
+                        cloud backup, disaster recovery.</p>
+                    <ul class="list-check">
+                        <li><i class="fa-solid fa-check accent-orange"></i> Automated Backup</li>
+                        <li><i class="fa-solid fa-check accent-orange"></i> Disaster Recovery</li>
+                        <li><i class="fa-solid fa-check accent-orange"></i> Enterprise Network</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== WEB & APP ========== -->
+        <section id="web-dev" class="section">
+            <div class="grid-2" id="web-grid">
+                <div>
+                    <h2><span class="inline-icon-accent bg-accent-yellow" style="color:#121212;">⌨️</span> Custom
+                        Websites, E‑Commerce & Apps</h2>
+                    <p style="font-size:1.1rem;margin:1rem 0 1.5rem 0;color:var(--text-secondary);">
+                        We build elite, lightning‑fast web applications, custom platforms, and complete e‑commerce
+                        stores across modern architectures.
+                    </p>
+                    <ul class="list-check">
+                        <li><i class="fa-solid fa-check accent-teal"></i> Custom Web App & Software Dev</li>
+                        <li><i class="fa-solid fa-check accent-teal"></i> E‑Commerce Store Setup & Integration</li>
+                        <li><i class="fa-solid fa-check accent-teal"></i> Responsive UI/UX & High‑Speed</li>
+                    </ul>
+                </div>
+                <div class="card card-dark"
+                    style="border-color:var(--accent-yellow);box-shadow:10px 10px 0 0 var(--accent-yellow);">
+                    <div style="font-size:0.7rem;letter-spacing:3px;color:var(--accent-yellow);">// System Architecture
+                    </div>
+                    <h4 style="color:#fff;margin:0.4rem 0 0.8rem 0;">Full‑Stack Digital Solutions</h4>
+                    <p style="color:#bbb;margin-bottom:1.2rem;">We engineer secure, scalable digital assets designed to
+                        convert traffic and accelerate revenue.</p>
+                    <a href="#contact" class="btn"
+                        style="background:var(--accent-yellow);color:#121212;box-shadow:8px 8px 0 0 #000;border-color:#000;">Request
+                        Development Scope</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== BUSINESS GROWTH ========== -->
+        <section id="business-growth" class="section">
+            <h2><span class="inline-icon-accent bg-accent-orange">📈</span> Business Growth & Online Setup</h2>
+            <p style="font-size:1.15rem;margin-bottom:2rem;color:var(--text-secondary);">Strategic digital positioning,
+                SEO, and automated customer acquisition.</p>
+
+            <div class="grid-3" id="growth-grid">
+                <div class="card" style="border-color:var(--accent-pink);box-shadow:10px 10px 0 0 var(--accent-pink);">
+                    <div
+                        style="font-size:2.5rem;background:var(--accent-pink);color:#fff;display:inline-block;padding:0.3rem 1rem;margin-bottom:1rem;">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4>Local & Organic SEO</h4>
+                    <p style="color:var(--text-secondary);">Dominate DMV search with technical audits, keyword
+                        positioning, and optimized digital footprints.</p>
+                </div>
+                <div class="card"
+                    style="border-color:var(--accent-yellow);box-shadow:10px 10px 0 0 var(--accent-yellow);">
+                    <div
+                        style="font-size:2.5rem;background:var(--accent-yellow);color:#121212;display:inline-block;padding:0.3rem 1rem;margin-bottom:1rem;">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h4>Paid Media & Ad Funnels</h4>
+                    <p style="color:var(--text-secondary);">High‑ROI Google Ads and social campaigns to generate
+                        qualified B2B and retail leads.</p>
+                </div>
+                <div class="card" style="border-color:var(--accent-teal);box-shadow:10px 10px 0 0 var(--accent-teal);">
+                    <div
+                        style="font-size:2.5rem;background:var(--accent-teal);color:#fff;display:inline-block;padding:0.3rem 1rem;margin-bottom:1rem;">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h4>Complete Online Setup</h4>
+                    <p style="color:var(--text-secondary);">Turnkey digital setup: domain, secure email, hosting, and
+                        brand configuration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== NFC HARDWARE ========== -->
+        <section id="nfc-hardware" class="section">
+            <div class="grid-2" id="nfc-grid">
+                <div>
+                    <span class="badge" style="background:var(--accent-purple);color:#fff;">Physical Hardware</span>
+                    <h3 style="margin-top:0.6rem;">Custom Bulk NFC Google Review Cards & Stickers</h3>
+                    <p style="margin:1rem 0;color:var(--text-secondary);">Bridge the physical‑to‑digital gap with
+                        custom‑programmed NFC review cards, stands, and stickers. Tap to prompt Google review.</p>
+                    <ul class="list-check">
+                        <li><i class="fa-solid fa-circle-check accent-purple"></i> Instant tap‑to‑review (no app)</li>
+                        <li><i class="fa-solid fa-circle-check accent-purple"></i> Custom printed with your brand</li>
+                        <li><i class="fa-solid fa-circle-check accent-purple"></i> Bulk orders shipped direct</li>
+                    </ul>
+                </div>
+                <div>
+                    <div
+                        style="background:var(--bg-card);border:4px solid var(--accent-pink);padding:1.2rem;box-shadow:15px 15px 0 0 var(--accent-pink);transition:transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);">
+                        <img src="./image_8aac1f1.jpg" alt="SHM Custom NFC Review Hardware" class="img-fit"
+                            style="max-height:320px;">
+                        <p style="margin-top:0.8rem;font-weight:600;text-align:center;color:var(--text-secondary);">
+                            Equip your storefront, counters, and sales team.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CLIENTS ========== -->
+        <section id="clients" class="section">
+            <h2><span class="inline-icon-accent bg-accent-orange">🤝</span> Who We Power</h2>
+            <p style="font-size:1.15rem;margin-bottom:2.5rem;color:var(--text-secondary);max-width:680px;">Real DMV
+                businesses running on SHM‑built systems — from point‑of‑sale reliability to review‑generating NFC
+                hardware.</p>
+
+            <div class="client-card" id="clients-grid">
+                <div class="client-card-icon">
+                    <i class="fa-solid fa-pepper-hot"></i>
+                </div>
+                <div class="client-card-body">
+                    <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:0.8rem;">
+                        <span class="badge" style="background:var(--accent-orange);color:#fff;">Restaurant &
+                            Hospitality</span>
+                        <span class="badge" style="background:var(--accent-teal);color:#fff;">Family‑Owned Since
+                            2014</span>
+                    </div>
+                    <h4 style="margin-bottom:0.3rem;">El Paso Mexican Grill</h4>
+                    <p
+                        style="font-weight:700;text-transform:uppercase;font-size:0.8rem;letter-spacing:1px;color:var(--accent-orange);margin-bottom:1rem;">
+                        <i class="fa-solid fa-location-dot"></i> 16918 Dumfries Rd, Dumfries, VA 22025
+                    </p>
+                    <p style="margin-bottom:1.2rem;">A locally‑loved, family‑run Mexican restaurant right off I‑95.
+                        SHM Supplies equipped their storefront with custom NFC Google Review cards and keeps their
+                        in‑house tech running smoothly — from POS uptime to network support — so the team can focus on
+                        the kitchen, not the systems.</p>
+                    <ul class="list-check" style="margin-bottom:1.5rem;">
+                        <li><i class="fa-solid fa-check accent-orange"></i> Custom NFC review‑card rollout</li>
+                        <li><i class="fa-solid fa-check accent-orange"></i> Ongoing IT & network support</li>
+                        <li><i class="fa-solid fa-check accent-orange"></i> Ranked among Dumfries' top‑rated
+                            restaurants</li>
+                    </ul>
+                    <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+                        <a href="https://elpasodumfries.com/" target="_blank" rel="noopener" class="btn"
+                            style="border-color:var(--accent-orange);box-shadow:8px 8px 0 0 var(--accent-orange);">Visit
+                            Website</a>
+                        <a href="https://www.google.com/search?q=el+paso+mexican+grill+dumfries+virginia"
+                            target="_blank" rel="noopener" class="btn">See Reviews on Google</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CAREERS ========== -->
+        <section id="careers" class="section">
+            <h2><span class="inline-icon-accent bg-accent-teal">👥</span> Careers at SHM Supplies L.L.C.</h2>
+            <p style="font-size:1.15rem;margin-bottom:2rem;color:var(--text-secondary);">We seek ambitious IT
+                specialists, help desk agents, and web developers across the DMV.</p>
+
+            <div class="grid-2" id="careers-grid">
+                <div class="card"
+                    style="border-color:var(--accent-orange);box-shadow:10px 10px 0 0 var(--accent-orange);">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;">
+                        <span class="badge" style="background:var(--accent-orange);color:#fff;">Remote / DMV</span>
+                        <span style="font-weight:700;color:var(--text-secondary);">Full‑Time / Contract</span>
+                    </div>
+                    <h4>IT Help Desk & Support Specialist</h4>
+                    <p style="margin:0.8rem 0 1.2rem 0;color:var(--text-secondary);">Responsive tier‑1/tier‑2
+                        troubleshooting, remote maintenance, corporate support.</p>
+                    <a href="mailto:info@shmsuppliesllc.com?subject=Job Application - IT Support Specialist"
+                        class="btn btn-primary" style="display:block;text-align:center;">Apply via Email</a>
+                </div>
+
+                <div class="card"
+                    style="border-color:var(--accent-purple);box-shadow:10px 10px 0 0 var(--accent-purple);">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:0.8rem;">
+                        <span class="badge" style="background:var(--accent-purple);color:#fff;">Remote</span>
+                        <span style="font-weight:700;color:var(--text-secondary);">Project‑Based</span>
+                    </div>
+                    <h4>Web & Application Developer</h4>
+                    <p style="margin:0.8rem 0 1.2rem 0;color:var(--text-secondary);">Architect high‑performance web
+                        apps, custom frontends, scalable platforms.</p>
+                    <a href="mailto:info@shmsuppliesllc.com?subject=Job Application - Web Developer"
+                        class="btn btn-primary" style="display:block;text-align:center;">Apply via Email</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONTACT ========== -->
+        <section id="contact" class="section" style="border-bottom:none;">
+            <div class="grid-2" id="contact-grid">
+                <div>
+                    <h2 style="border-bottom:4px solid var(--accent-pink);display:inline-block;padding-bottom:0.3rem;">
+                        Get In Touch</h2>
+                    <h3 style="margin:1rem 0 0.5rem 0;">Request an Enterprise Consultation</h3>
+                    <p style="margin-bottom:1.8rem;color:var(--text-secondary);">IT support, web/app dev, business
+                        setup, bulk NFC hardware – contact SHM Supplies today.</p>
+
+                    <div style="display:flex;flex-direction:column;gap:1.2rem;">
+                        <div style="display:flex;gap:0.8rem;align-items:center;">
+                            <span
+                                style="background:var(--accent-teal);color:#fff;padding:0.3rem 0.8rem;font-size:1.3rem;"><i
+                                    class="fa-solid fa-user-tie"></i></span>
+                            <div><strong style="color:var(--text-primary);font-size:1.05rem;">CEO /
+                                    Founder</strong><br><span style="color:var(--text-secondary);">Syed Mustafa</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:center;">
+                            <span
+                                style="background:var(--accent-pink);color:#fff;padding:0.3rem 0.8rem;font-size:1.3rem;"><i
+                                    class="fa-solid fa-envelope"></i></span>
+                            <div><strong style="color:var(--text-primary);font-size:1.05rem;">Email</strong><br><a
+                                    href="mailto:info@shmsuppliesllc.com">info@shmsuppliesllc.com</a></div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:center;">
+                            <span
+                                style="background:var(--accent-orange);color:#fff;padding:0.3rem 0.8rem;font-size:1.3rem;"><i
+                                    class="fa-solid fa-phone"></i></span>
+                            <div><strong style="color:var(--text-primary);font-size:1.05rem;">Direct Line</strong><br><a
+                                    href="tel:5714976415">+1-571-497-6415</a></div>
+                        </div>
+                        <div style="display:flex;gap:0.8rem;align-items:center;">
+                            <span
+                                style="background:var(--accent-purple);color:#fff;padding:0.3rem 0.8rem;font-size:1.3rem;"><i
+                                    class="fa-brands fa-linkedin-in"></i></span>
+                            <div><strong style="color:var(--text-primary);font-size:1.05rem;">LinkedIn</strong><br><a
+                                    href="https://www.linkedin.com/company/shm-supplies-l-l-c" target="_blank">SHM
+                                    Supplies L.L.C.</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card"
+                    style="box-shadow:15px 15px 0 0 var(--accent-yellow);border-color:var(--accent-yellow);">
+                    <h4 style="margin-bottom:1.2rem;">Schedule a Consultation or Quote</h4>
+                    <form action="https://formsubmit.co/info@shmsuppliesllc.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject"
+                            value="New Consultation / Quote Request from SHM Supplies Website!">
+
+                        <div class="form-grid">
+                            <div>
+                                <label>Your Name</label>
+                                <input type="text" name="name" required placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label>Email Address</label>
+                                <input type="email" name="email" required placeholder="john@business.com">
+                            </div>
+                            <div>
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" placeholder="571-000-0000">
+                            </div>
+                            <div>
+                                <label>Business Name</label>
+                                <input type="text" name="business" placeholder="Your Business">
+                            </div>
+                        </div>
+
+                        <div style="margin-top:1rem;">
+                            <label>Services Needed</label>
+                            <select name="service">
+                                <option>IT Services & 24/7 Tech Support</option>
+                                <option>Web & Application Development</option>
+                                <option>Business Growth & Online Setup</option>
+                                <option>Bulk NFC Review Cards & Stickers</option>
+                                <option>Other Technical Services</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-top:1rem;">
+                            <label>Project Details / Requirements</label>
+                            <textarea name="message" rows="4"
+                                placeholder="Tell us about your IT needs, application scope, or business goals..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" id="submitBtn"
+                            style="width:100%;margin-top:1.2rem;font-size:1rem;padding:0.9rem;background:var(--accent-pink);color:#fff;border-color:var(--accent-pink);box-shadow:8px 8px 0 0 var(--accent-pink);">Submit
+                            Request & Book Strategy Call</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FOOTER ========== -->
+        <div class="footer-brutal">
+            <p>&copy; 2026 SHM Supplies L.L.C. All rights reserved. Serving the DMV Area 24/7/365.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:0.8rem 1.5rem;align-items:center;justify-content:center;">
+                <a href="https://www.linkedin.com/company/shm-supplies-l-l-c" target="_blank">LinkedIn</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="btn"
+                    style="padding:0.4rem 1.2rem;font-size:0.8rem;">↑ Top</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ========== PARTICLES BACKGROUND ==========
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#d7267a', '#f4c430', '#1e7f7a', '#e05a2a', '#6b2fa0'];
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = 4 + Math.random() * 12;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.opacity = 0.05 + Math.random() * 0.12;
+                particle.style.animation = `floatParticle ${15 + Math.random() * 25}s linear infinite`;
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                container.appendChild(particle);
+            }
+            const style = document.createElement('style');
+            style.textContent = `
+        @keyframes floatParticle {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(${Math.random() > 0.5 ? '' : '-'}30px, -40px) scale(1.2); }
+            50% { transform: translate(${Math.random() > 0.5 ? '' : '-'}20px, 30px) scale(0.8); }
+            75% { transform: translate(${Math.random() > 0.5 ? '' : '-'}40px, -20px) scale(1.1); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        `;
+            document.head.appendChild(style);
+        })();
+
+        // ========== THEME TOGGLE ==========
+        (function () {
+            const toggleBtn = document.getElementById('themeToggle');
+            let currentTheme = localStorage.getItem('brutal-theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+            toggleBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                localStorage.setItem('brutal-theme', isDark ? 'dark' : 'light');
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.style.boxShadow = isDark ? '8px 8px 0 0 #000' : '8px 8px 0 0 #0d0d0d';
+                });
+            });
+        })();
+
+        // ========== SCROLL PROGRESS ==========
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scrollProgress').style.width = (winScroll / height) * 100 + '%';
+        });
+
+        // ========== BACK TO TOP ==========
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backBtn.classList.add('show');
+            } else {
+                backBtn.classList.remove('show');
+            }
+        });
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== MOBILE MENU ==========
+        const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function setMobileMenu(open) {
+            mobileMenu.classList.toggle('show', open);
+            mobileToggleBtn.setAttribute('aria-expanded', String(open));
+        }
+
+        mobileToggleBtn.addEventListener('click', () => {
+            setMobileMenu(!mobileMenu.classList.contains('show'));
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function () {
+                setMobileMenu(false);
+            });
+        });
+
+        // ========== HERO TYPING EFFECT ==========
+        const typingText = document.getElementById('typingText');
+        const phrases = [
+            'Architecting Systems',
+            'Digital Growth',
+            'Building Scalable Structure'
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 70;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 35;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 70;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            setTimeout(typeEffect, typeSpeed);
+        }
+        setTimeout(typeEffect, 600);
+
+        // ========== NAV LINKS SMOOTH SCROLL ==========
+        document.querySelectorAll('.nav-links a, #mobile-menu a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetSelector = this.getAttribute('href');
+                if (!targetSelector || targetSelector === '#') return;
+                const target = document.querySelector(targetSelector);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== GSAP + SCROLLTRIGGER ==========
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const heroBtn1 = document.getElementById('heroBtn1');
+            const heroBtn2 = document.getElementById('heroBtn2');
+
+            function animateButton(btn) {
+                gsap.to(btn, {
+                    scale: 1.06,
+                    duration: 0.2,
+                    ease: 'power2.out',
+                    yoyo: true,
+                    repeat: -1,
+                    repeatDelay: 2.5
+                });
+            }
+            animateButton(heroBtn1);
+            animateButton(heroBtn2);
+
+            [heroBtn1, heroBtn2].forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    gsap.to(btn, {
+                        scale: 1.12,
+                        duration: 0.25,
+                        ease: 'back.out(1.7)',
+                        boxShadow: '0px 0px 40px rgba(215,38,122,0.5)'
+                    });
+                });
+                btn.addEventListener('mouseleave', () => {
+                    gsap.to(btn, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                        boxShadow: '8px 8px 0 0 var(--shadow-color)'
+                    });
+                });
+            });
+
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.addEventListener('mouseenter', () => {
+                    gsap.to(submitBtn, {
+                        scale: 1.06,
+                        duration: 0.2,
+                        ease: 'back.out(1.7)',
+                        boxShadow: '14px 14px 0 0 var(--accent-pink)'
+                    });
+                });
+                submitBtn.addEventListener('mouseleave', () => {
+                    gsap.to(submitBtn, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                        boxShadow: '8px 8px 0 0 var(--accent-pink)'
+                    });
+                });
+                submitBtn.addEventListener('click', function (e) {
+                    gsap.to(this, {
+                        scale: 0.92,
+                        duration: 0.1,
+                        ease: 'power1.in',
+                        onComplete: () => {
+                            gsap.to(this, { scale: 1, duration: 0.2, ease: 'back.out(1.7)' });
+                        }
+                    });
+                });
+            }
+
+            backBtn.addEventListener('mouseenter', () => {
+                gsap.to(backBtn, {
+                    scale: 1.15,
+                    duration: 0.2,
+                    ease: 'back.out(1.7)',
+                    boxShadow: '14px 14px 0 0 var(--shadow-color)'
+                });
+            });
+            backBtn.addEventListener('mouseleave', () => {
+                gsap.to(backBtn, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                    boxShadow: '8px 8px 0 0 var(--shadow-color)'
+                });
+            });
+
+            function animateOnScroll(selector, fromVars, toVars, extra = {}) {
+                gsap.fromTo(selector, fromVars, {
+                    ...toVars,
+                    scrollTrigger: {
+                        trigger: selector,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse',
+                        ...extra
+                    }
+                });
+            }
+
+            gsap.from('.hero-img-box', {
+                scale: 0.7,
+                opacity: 0,
+                rotationY: 20,
+                duration: 1.4,
+                ease: 'back.out(1.7)',
+                delay: 0.4
+            });
+
+            gsap.from('.hero-left .hero-tag', {
+                opacity: 0,
+                y: -40,
+                duration: 0.8,
+                delay: 0.4,
+                ease: 'power2.out'
+            });
+
+            gsap.from('.hero-left p', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 0.5,
+                ease: 'power2.out'
+            });
+
+            gsap.from('.hero-left .btn', {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 0.7,
+                stagger: 0.15,
+                ease: 'power2.out'
+            });
+
+            gsap.from('#navbar', {
+                y: -60,
+                opacity: 0,
+                duration: 0.9,
+                ease: 'power2.out'
+            });
+
+            animateOnScroll('.service-card', { y: 70, opacity: 0, scale: 0.9, rotate: -3 }, {
+                y: 0, opacity: 1, scale: 1,
+                rotate: 0, duration: 0.8, stagger: 0.12, ease: 'back.out(1.5)'
+            }
+            );
+
+            animateOnScroll('#web-grid > div', { x: -60, opacity: 0 }, {
+                x: 0, opacity: 1, duration: 0.8, stagger: 0.15,
+                ease: 'power2.out'
+            }
+            );
+
+            animateOnScroll('#growth-grid .card', { y: 70, opacity: 0, scale: 0.85, rotate: 2 }, {
+                y: 0, opacity: 1,
+                scale: 1, rotate: 0, duration: 0.8, stagger: 0.1, ease: 'back.out(1.6)'
+            }
+            );
+
+            animateOnScroll('#nfc-grid > div', { x: -60, opacity: 0 }, {
+                x: 0, opacity: 1, duration: 0.8, stagger: 0.15,
+                ease: 'power2.out'
+            }
+            );
+
+            animateOnScroll('#clients-grid', { y: 60, opacity: 0, scale: 0.95 }, {
+                y: 0, opacity: 1, scale: 1,
+                duration: 0.8, ease: 'back.out(1.5)'
+            }
+            );
+
+            animateOnScroll('#careers-grid .card', { y: 60, opacity: 0, scale: 0.9 }, {
+                y: 0, opacity: 1, scale: 1,
+                duration: 0.8, stagger: 0.12, ease: 'back.out(1.5)'
+            }
+            );
+
+            animateOnScroll('#contact-grid > div', { x: -60, opacity: 0 }, {
+                x: 0, opacity: 1, duration: 0.8,
+                stagger: 0.15, ease: 'power2.out'
+            }
+            );
+
+            gsap.from('.footer-brutal', {
+                y: 50,
+                opacity: 0,
+                duration: 0.7,
+                scrollTrigger: {
+                    trigger: '.footer-brutal',
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+
+            document.querySelectorAll('.card, .hero-img-box, .client-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    gsap.to(card, {
+                        rotationY: x * 4,
+                        rotationX: -y * 4,
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        duration: 0.6,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                ScrollTrigger.refresh();
+            });
+        } else {
+            console.warn('GSAP/ScrollTrigger did not load — decorative animations skipped, core site still functional.');
+        }
+    </script>
+
+</body>
+
+</html>
